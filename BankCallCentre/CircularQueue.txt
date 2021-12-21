@@ -1,0 +1,180 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BankCallCentre
+{
+    public class CircularQueue
+    {
+        private int element;
+        private static int SIZE = 20; // Size of Circular Queue
+        private int front, tail;
+        private int[] items = new int[SIZE];
+        private int callNoTot;
+        private int callNoLeft;
+        private int callId;
+        private bool[] waiting = new bool[SIZE];
+        private string[] time = new string[SIZE];
+
+        public int [] Init()
+        {
+            for(int i = 0; i < items.Length; i++)
+            {
+                items[i] = -999;
+            }
+            return items;
+        }
+        public CircularQueue()
+        {
+            front = -1;
+            tail = -1;
+            callNoTot = 0;
+        }
+
+        // Check if the queue is full
+        public bool IsFull()
+        {
+            if (front == 0 && tail == SIZE - 1)
+            {
+                return true;
+            }
+            if (front == tail + 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        // Check if the queue is empty
+        public bool IsEmpty()
+        {
+            if (front == -1)
+                return true;
+            else
+                return false;
+        }
+
+        // Adding an element
+        public void EnQueue()
+        {
+            if (IsFull())
+            {
+                Console.WriteLine("Queue is full on " + time[callId]);
+            }
+            else
+            {
+                if (front == -1)
+                    front = 0;
+                tail = (tail + 1) % SIZE;
+                items[tail] = callId;
+                waiting[callId] = true;
+                time[callId] = DateTime.Now.ToString("dddd, dd MMMM yyyy, hh:mm:ss tt");
+                callNoTot++;
+                Console.WriteLine("Inserted call no. " + callNoTot + " ,id no. " + callId + " ,on " + time[callId]);
+                time[callId] = "      since " + time[callId];
+                callId++;
+                callNoLeft++;
+            }
+        }
+     
+        // Removing an element
+        public int DeQueue()
+        {
+            if (IsEmpty())
+            {
+                Console.WriteLine("Queue is empty");
+                return (-1);
+            }
+            else
+            {
+                items[front] = -999;
+                element = items[front];
+                callId--;
+                waiting[callId] = false;
+                time[callId] = DateTime.Now.ToString("dddd, dd MMMM yyyy, hh:mm:ss tt");
+                Console.WriteLine("Put call through to operator  on " + time[callId]);
+                time[callId] = null;
+                callNoLeft--;
+                if (front == tail)
+                {
+                    front = -1;
+                    tail = -1;
+                    callId = 0;
+                  
+                } /* Q has only one element, so we reset the queue after deleting it. */
+                else
+                {
+                    front = (front + 1) % SIZE;
+                }
+                return element;
+            }
+        }
+        public int Remove()
+        {
+            Console.WriteLine("What index do you wish to remove?");
+            callId = Convert.ToInt32(Console.ReadLine());
+            time[callId] = DateTime.Now.ToString("dddd, dd MMMM yyyy, hh:mm:ss tt");
+            if (IsEmpty())
+            {
+                Console.WriteLine("Queue is empty  on " + time[callId]);
+                return (-1);
+            }
+            else
+            {
+                waiting[callId] = false;
+                callNoLeft--;
+                if (front == tail)
+                {
+                    front = -1;
+                    tail = -1;
+                    callId = 0;
+                }
+                else                    /* Q has only one element, so we reset the queue after deleting it. */
+                {
+                    front = (front + 1) % SIZE;
+
+                }
+                Console.WriteLine("Id call no. " + callId + " removed on " + time[callId]);
+                time[callId] = null;
+                return element;
+            }
+        }
+        public int Update()
+        {
+            Console.WriteLine("What index do you wish to update?");
+            callId = Convert.ToInt32(Console.ReadLine());
+            time[callId] = DateTime.Now.ToString("dddd, dd MMMM yyyy, hh:mm:ss tt");
+            time[callId] = "      since " + time[callId];
+            if (IsEmpty())
+            {
+                Console.WriteLine("Queue is empty on" + time[callId]);
+                return (-1);
+            } else 
+            {
+                callNoLeft--;
+                Console.WriteLine("Queue updated : Id call no. " + items[callId] + " on " + time[callId]);
+            }
+            return element;
+        }
+
+        public void Display()
+        {
+            /* Function to display status of Circular Queue */
+            int i;
+            if (IsEmpty())
+            {
+                Console.WriteLine("Empty Queue");
+            }
+            else
+            {
+                Console.WriteLine("Front -> " + front);
+                Console.WriteLine("Rear -> " + tail);
+                Console.WriteLine("Calls on the queue ");
+                for (i = 0; i < items.Length; i++)
+                    Console.WriteLine(" ID call no. [" + i + "] " + "waiting for operator : " + waiting[i] + " " + time[i]);
+
+                Console.WriteLine("\n[+]Call no. left = " + callNoLeft + ", call no. TodayTotal =" + callNoTot + ", on " + DateTime.Now.ToString("dddd, dd MMMM yyyy, hh:mm:ss tt"));
+            }
+        }
+    }
+}

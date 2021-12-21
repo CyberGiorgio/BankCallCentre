@@ -1,0 +1,59 @@
+using System;
+
+namespace BankCallCentre
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            bool isTrue;
+            CircularQueue cq = new CircularQueue();
+            cq.Init();
+            do
+            {
+                cq.Display();
+                Features.Menu();
+                isTrue = false;
+                try
+                {
+                    switch (Convert.ToInt32(Console.ReadLine()))
+                    {
+                        case 1:
+                            cq.EnQueue();
+                            break;
+                        case 2:
+                            cq.DeQueue();
+                            break;
+                        case 3:
+                            cq.Remove();
+                            break;
+                        case 4:
+                            cq.Update();
+                            break;
+                        case 5:
+                            isTrue = true;
+                            System.Environment.Exit(0);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("Invalid input");
+                }
+                try
+                {
+                    if (Features.TryAgain() == true)                                   // play again 'Y' or 'N'?   
+                    {
+                        Console.Clear();                                                   //if press "Y" clear screen
+                    }
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("Invalid input");
+                }
+            } while (!isTrue) ;
+        }
+    }
+}

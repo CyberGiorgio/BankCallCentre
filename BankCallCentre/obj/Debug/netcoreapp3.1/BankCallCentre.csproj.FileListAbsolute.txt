@@ -1,0 +1,14 @@
+C:\Users\white\source\repos\BankCallCentre\bin\Debug\netcoreapp3.1\BankCallCentre.exe
+C:\Users\white\source\repos\BankCallCentre\bin\Debug\netcoreapp3.1\BankCallCentre.deps.json
+C:\Users\white\source\repos\BankCallCentre\bin\Debug\netcoreapp3.1\BankCallCentre.runtimeconfig.json
+C:\Users\white\source\repos\BankCallCentre\bin\Debug\netcoreapp3.1\BankCallCentre.runtimeconfig.dev.json
+C:\Users\white\source\repos\BankCallCentre\bin\Debug\netcoreapp3.1\BankCallCentre.dll
+C:\Users\white\source\repos\BankCallCentre\bin\Debug\netcoreapp3.1\BankCallCentre.pdb
+C:\Users\white\source\repos\BankCallCentre\obj\Debug\netcoreapp3.1\BankCallCentre.csproj.AssemblyReference.cache
+C:\Users\white\source\repos\BankCallCentre\obj\Debug\netcoreapp3.1\BankCallCentre.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\white\source\repos\BankCallCentre\obj\Debug\netcoreapp3.1\BankCallCentre.AssemblyInfoInputs.cache
+C:\Users\white\source\repos\BankCallCentre\obj\Debug\netcoreapp3.1\BankCallCentre.AssemblyInfo.cs
+C:\Users\white\source\repos\BankCallCentre\obj\Debug\netcoreapp3.1\BankCallCentre.csproj.CoreCompileInputs.cache
+C:\Users\white\source\repos\BankCallCentre\obj\Debug\netcoreapp3.1\BankCallCentre.dll
+C:\Users\white\source\repos\BankCallCentre\obj\Debug\netcoreapp3.1\BankCallCentre.pdb
+C:\Users\white\source\repos\BankCallCentre\obj\Debug\netcoreapp3.1\BankCallCentre.genruntimeconfig.cache
